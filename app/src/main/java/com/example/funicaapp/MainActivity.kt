@@ -7,6 +7,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.funicaapp.SettingListItem.MenuItem
+import com.example.funicaapp.SettingListItem.Profile
 import com.example.funicaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         handleWindowInset()
 
-        binding.menuItemRecycleView.layoutManager =
+        binding.settingItemRecycleView.layoutManager =
             LinearLayoutManager(this)
-        binding.menuItemRecycleView.adapter = menuAdapter
+        binding.settingItemRecycleView.adapter = menuAdapter
 
         updateAdapter()
 
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 val menuItem = listOf(
+    Profile(R.drawable.ic_user_avatar, "Andrew Ainsley", "+1 111 467 378 999"),
     MenuItem(R.drawable.ic_user_icon, "Edit Profile", R.drawable.ic_right_icon),
     MenuItem(R.drawable.ic_pin_icon, "Address", R.drawable.ic_right_icon),
     MenuItem(R.drawable.ic_notifications_icon, "Notifications", R.drawable.ic_right_icon),

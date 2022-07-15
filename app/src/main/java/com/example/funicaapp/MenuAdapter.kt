@@ -6,32 +6,66 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.funicaapp.databinding.LayoutMenuItemBinding
+import com.example.funicaapp.databinding.LayoutProfileBinding
 
 
-class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.MyViewHolder>(MyDiffUtil<MenuItem>()) {
+class MenuAdapter :
+    ListAdapter<SettingListItem, RecyclerView.ViewHolder>(MyDiffUtil<SettingListItem>()) {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            LayoutMenuItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        when (viewType) {
+            SettingListItem.ViewType.PROFILE.ordinal -> {
+                return ProfileViewHolder(
+                    LayoutProfileBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+            else -> {
+                return MenuViewHolder(
+                    LayoutMenuItemBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+
+        }
+
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+
+        when (holder) {
+            is MenuViewHolder -> holder.bind(item as SettingListItem.MenuItem)
+            is ProfileViewHolder -> holder.bind(item as SettingListItem.Profile)
+        }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return getItem(position).Id.ordinal
+    }
 
-    inner class MyViewHolder(
+    inner class ProfileViewHolder(
+        private val binding: LayoutProfileBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: SettingListItem.Profile) {
+            binding.avatarImage.setImageResource((item.profileImg))
+            binding.userNameText.text = item.fullName
+            binding.userNumberText.text = item.mobileNumber
+        }
+    }
+
+    inner class MenuViewHolder(
         private val binding: LayoutMenuItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MenuItem) {
+        fun bind(item: SettingListItem.MenuItem) {
             binding.itemIconImage.setImageResource(item.icon)
             binding.itemNameText.text = item.title
             if (item.description != null) {
@@ -48,10 +82,10 @@ class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.MyViewHolder>(MyDiffUtil<M
                 binding.itemEnterImage.visibility = View.GONE
             }
 
-            if(item.hasSwitch){
+            if (item.hasSwitch) {
                 binding.itemEnterImage.visibility = View.GONE
                 binding.itemSwitch.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.itemSwitch.visibility = View.GONE
                 binding.itemEnterImage.visibility = View.VISIBLE
             }
