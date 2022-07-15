@@ -6,7 +6,8 @@ data class MenuItem(
     @DrawableRes
     val icon: Int,
     val title: String,
-    val description: String?,
     @DrawableRes
-    val enterIcon: Int?
+    val enterIcon: Int?,
+    val description: String? = null,
+    val hasSwitch: Boolean = false,
 )

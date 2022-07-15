@@ -48,7 +48,7 @@ class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.MyViewHolder>(MyDiffUtil<M
                 binding.itemEnterImage.visibility = View.GONE
             }
 
-            if(item.title == "Dark Mode"){
+            if(item.hasSwitch){
                 binding.itemEnterImage.visibility = View.GONE
                 binding.itemSwitch.visibility = View.VISIBLE
             }else{

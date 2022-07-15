@@ -47,16 +47,16 @@ class MainActivity : AppCompatActivity() {
 }
 
 val menuItem = listOf(
-    MenuItem(R.drawable.ic_user_icon, "Edit Profile", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_pin_icon, "Address", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_notifications_icon, "Notifications", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_payments_icon, "Payment", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_security_icon, "Security", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_language_icon, "Language", "English (US)", R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_eye_icon, "Dark Mode", null, R.drawable.ic_switcher_icon),
-    MenuItem(R.drawable.ic_security_icon, "Privacy", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_help_icon, "Help Center", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_friends_icon, "Invite Friends", null, R.drawable.ic_right_icon),
-    MenuItem(R.drawable.ic_log_out_icon, "Logout", null, null),
+    MenuItem(R.drawable.ic_user_icon, "Edit Profile", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_pin_icon, "Address", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_notifications_icon, "Notifications", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_payments_icon, "Payment", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_security_icon, "Security", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_language_icon, "Language", R.drawable.ic_right_icon, "English (US)"),
+    MenuItem(R.drawable.ic_eye_icon, "Dark Mode", R.drawable.ic_switcher_icon, hasSwitch = true),
+    MenuItem(R.drawable.ic_security_icon, "Privacy", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_help_icon, "Help Center", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_friends_icon, "Invite Friends", R.drawable.ic_right_icon),
+    MenuItem(R.drawable.ic_log_out_icon, "Logout", null),
 
     )
